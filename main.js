@@ -47,7 +47,7 @@ mc.on('kicked', function(reason) {
 mc.on("message", (chatMsg) => {
     const msg = chatMsg.toString();
     console.log(msg);
-    client.guilds.get(config["guild_id"]).channels.get("channel_id").send("> Messagem: Recebida\n", { msg });
+    client.channels.get("channel_id").send("> Messagem: Recebida\n", { msg });
 });
 
 // bot stuff
