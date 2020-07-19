@@ -39,13 +39,13 @@ mc.on("login", () => {
 });
 
 mc.on('kicked', function(reason) {
-  client.channels.get(config["channel_id"]).send("> Desconectado do server\n", { reason });
+  client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
 });
 
 mc.on("message", (chatMsg) => {
     const msg = chatMsg.toString();
     console.log(msg);
-    client.channels.get(config["channel_id"]).send("> Messagem: Recebida\n", { msg });
+    client.channels.get(config["channel_id"]).send(msg);
 });
 
 // bot stuff
