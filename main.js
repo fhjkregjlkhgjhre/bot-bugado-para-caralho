@@ -53,4 +53,10 @@ client.on("ready", () => {
     console.log("[WORKER] Discord -> ON");
 });
 
+client.on("message", (message) => {
+    if (message.channel.id !== config["discord-channel"] || message.author.bot || message.content.startsWith(config["discord-bot-prefix"])) return;
+    console.log("Discord: " + message.author.username + ": " + message.content);
+    mc.chat(message.content);
+});
+
 client.login(process.env.discordkey);
