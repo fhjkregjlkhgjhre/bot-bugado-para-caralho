@@ -1,0 +1,1 @@
+# bot-bugado-para-caralho
