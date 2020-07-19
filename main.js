@@ -5,13 +5,13 @@ const config = require("./config.json");
 const prefix = "/"
 
 // minecraft stuff
-const client = new discord.Client({autoReconnect: true}); //Caso que o discord me mande fuder na ligação
+const client = new discord.Client({autoReconnect: true}); //Caso que o discord se desligue
 const options = {
     host: 'mc.hypixel.net',
     port: 25565,
     version: '1.8.9',
-    username: config["minecraft-username"],
-    password: config["minecraft-password"],
+    username: process.env.email,
+    password: process.env.password,
 };
 
 let mc;
