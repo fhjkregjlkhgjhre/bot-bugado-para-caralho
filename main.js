@@ -55,8 +55,8 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
-	mc.send(command)
+	if (message.author.bot) return;
+	mc.send(message.content)
 });
 
 client.login(process.env.discordkey);
