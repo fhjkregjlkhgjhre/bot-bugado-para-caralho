@@ -34,14 +34,12 @@ mc.on("login", () => {
     setTimeout(() => {
     	console.log("[WORKER] Minecraft -> Ligação completa ao server")
         console.log("[WORKER] Minecraft -> Indo para skyblock.");
-        mc.chat("/play sb");
-        bot.navigate.to(Vec3(0,0,0));
     }, 1000);
     
 });
 
 mc.on('kicked', function(reason) {
-  client.guilds.get(config["guild_id"]).channels.get("channel_id").send("> Desconectado do server\n", { reason });
+  client.channels.get(config["channel_id"]).send("> Desconectado do server\n", { reason });
 });
 
 mc.on("message", (chatMsg) => {
