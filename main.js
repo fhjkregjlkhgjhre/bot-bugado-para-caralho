@@ -1,6 +1,6 @@
 const mineflayer = require("mineflayer");
 const discord = require("discord.js");
-const navigatePlugin = require('mineflayer-navigate')(mineflayer);
+//const navigatePlugin = require('mineflayer-navigate')(mineflayer);
 const config = require("./config.json");
 
 // minecraft stuff
