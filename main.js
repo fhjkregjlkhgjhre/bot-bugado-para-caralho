@@ -55,4 +55,4 @@ client.on("ready", () => {
     console.log("[WORKER] Discord -> ON");
 });
 
-client.login(config["discord-token"]);
+client.login(process.env.discord-token);
