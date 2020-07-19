@@ -17,10 +17,12 @@ const options = {
 let mc;
 (function init() {
     console.log("[WORKER] Minecraft -> Iniciando sessão na conta");
+    client.user.setActivity("Se esta este status significa que nao tenho conta para usar");
     mc = mineflayer.createBot(options);
     mc._client.once("session", session => options.session = session);
     mc.once("end", () => {
         setTimeout(() => {
+	    client.user.setActivity("Erro: Reconectando");
             console.log("Falhou ao entrar no server, reconenctando");
             init();
         }, 60000);
@@ -33,6 +35,7 @@ mc.on("login", () => {
     uuid = mc._client.session.selectedProfile.id;
     name = mc._client.session.selectedProfile.name;
     setTimeout(() => {
+	client.user.setActivity("Bot Online no hypixel, Nome:" + name);
     	console.log("[WORKER] Minecraft -> Ligação completa ao server")
     }, 1000);
     
