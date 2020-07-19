@@ -1,0 +1,18 @@
+{
+  "name": "skyblock-afk-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "SouNobbao Crl",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "mineflayer": "^2.9.6",
+    "discord.js": "^11.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": []
+}
+
