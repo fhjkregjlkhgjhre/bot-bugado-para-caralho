@@ -2,6 +2,7 @@ const mineflayer = require("mineflayer");
 const discord = require("discord.js");
 //const navigatePlugin = require('mineflayer-navigate')(mineflayer);
 const config = require("./config.json");
+const prefix = "/"
 
 // minecraft stuff
 const client = new discord.Client({autoReconnect: true}); //Caso que o discord me mande fuder na ligação
@@ -33,7 +34,6 @@ mc.on("login", () => {
     name = mc._client.session.selectedProfile.name;
     setTimeout(() => {
     	console.log("[WORKER] Minecraft -> Ligação completa ao server")
-        console.log("[WORKER] Minecraft -> Indo para skyblock.");
     }, 1000);
     
 });
@@ -54,9 +54,10 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
-    if (message.channel.id !== config["discord-channel"] || message.author.bot || message.content.startsWith(config["discord-bot-prefix"])) return;
-    console.log("Discord: " + message.author.username + ": " + message.content);
-    mc.chat(message.content);
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
+	const args = message.content.slice(prefix.length).trim().split(/ +/);
+	const command = args.shift().toLowerCase();
+    mc.send("/" + command)
 });
 
 client.login(process.env.discordkey);
