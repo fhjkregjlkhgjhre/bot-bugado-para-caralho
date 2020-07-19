@@ -17,12 +17,10 @@ const options = {
 let mc;
 (function init() {
     console.log("[WORKER] Minecraft -> Iniciando sessão na conta");
-    client.user.setActivity("Se esta este status significa que nao tenho conta para usar");
     mc = mineflayer.createBot(options);
     mc._client.once("session", session => options.session = session);
     mc.once("end", () => {
         setTimeout(() => {
-	    client.user.setActivity("Erro: Reconectando");
             console.log("Falhou ao entrar no server, reconenctando");
             init();
         }, 60000);
