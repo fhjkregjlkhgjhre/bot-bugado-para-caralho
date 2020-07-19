@@ -35,7 +35,7 @@ mc.on("login", () => {
     	console.log("[WORKER] Minecraft -> Ligação completa ao server")
         console.log("[WORKER] Minecraft -> Indo para skyblock.");
         mc.chat("/play sb");
-        bot.navigate.to(Vec3(, , ));
+        bot.navigate.to(Vec3(0,0,0));
     }, 1000);
     
 });
