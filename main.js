@@ -67,7 +67,7 @@ client.on("message", (message) => {
 		};
 		if(argumentos.length === 3){
 			const data = vec3(argumentos[0], argumentos[1], argumentos[2]);
-			bot.navigate.to(data);
+			mc.navigate.to(data);
 		};
 	};
 	if (!command === "vai-para"){
