@@ -61,10 +61,8 @@ client.on("message", (message) => {
 	const argumentos = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = argumentos.shift().toLowerCase();
 	if (command === 'vai-para') {
-		if (!argumentos.length) {
-			return message.channel.send("Eu preciso de pelo menos umas coordenadas");
-		};
-		if (!argumentos.length === 3){
+		console.log(argumentos.lenght)
+		if (!argumentos.length){
 			return message.channel.send("XYZ (São 3 coisas) /vai-para <xyz>");
 		};
 		if(argumentos.length === 3){
@@ -73,6 +71,7 @@ client.on("message", (message) => {
 		};
 	};
 	if (!command === "vai-para"){
+		console.log(command)
 		mc.send("/" + command)
 	};
 });
