@@ -1,5 +1,6 @@
 const mineflayer = require("mineflayer");
 const discord = require("discord.js");
+const vec3 = require("vec3")
 //const navigatePlugin = require('mineflayer-navigate')(mineflayer);
 const config = require("./config.json");
 const prefix = "/"
@@ -42,14 +43,6 @@ mc.on("login", () => {
 mc.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
 });
-
-bot.on('chat', function (username, message) {
-  	if (username === bot.username) return
-  	const target = bot.players[username].entity
-  	if (message === 'come') {
-		bot.navigate.to(target.position)
-	}
-});
 	  
 mc.on("message", (chatMsg) => {
     const msg = chatMsg.toString();
@@ -78,7 +71,8 @@ client.on("message", (message) => {
 				bot.navigate.to(data);
 			};
 		};
-	}else if{
+	};
+	if (!command === "vai-para"){
 		mc.send("/" + command)
 	};
 });
