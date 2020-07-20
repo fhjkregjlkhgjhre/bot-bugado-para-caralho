@@ -43,6 +43,14 @@ mc.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
 });
 
+bot.on('chat', function (username, message) {
+  	if (username === bot.username) return
+  	const target = bot.players[username].entity
+  	if (message === 'come') {
+		bot.navigate.to(target.position)
+	}
+});
+	  
 mc.on("message", (chatMsg) => {
     const msg = chatMsg.toString();
     console.log(msg);
@@ -57,10 +65,22 @@ client.on("ready", () => {
 client.on("message", (message) => {
 	client.on("message", (message) => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
-	const args = message.content.slice(prefix.length).trim().split(/ +/);
-	const command = args.shift().toLowerCase();
-	mc.send("/" + command)
-
+	const argumentos = message.content.slice(prefix.length).trim().split(/ +/);
+	const command = argumentos.shift().toLowerCase();
+	if (command === 'vai-para') {
+		if (!argumentos.length) {
+			return message.channel.send("Eu preciso de pelo menos umas coordenadas");
+		}else if{
+			if (!argumentos.length ===3){
+				return message.channel.send("XYZ (São 3 coisas) /vai-para <xyz>");
+			}else if{
+				const data = vec3(argumentos[0], argumentos[1], argumentos[2]);
+				bot.navigate.to(data);
+			};
+		}
+	}else if{
+		mc.send("/" + command)
+	};
 });
 });
 
