@@ -77,7 +77,7 @@ client.on("message", (message) => {
 				const data = vec3(argumentos[0], argumentos[1], argumentos[2]);
 				bot.navigate.to(data);
 			};
-		}
+		};
 	}else if{
 		mc.send("/" + command)
 	};
