@@ -63,10 +63,12 @@ client.on("message", (message) => {
 	if (command === 'vai-para') {
 		if (!argumentos.length) {
 			return message.channel.send("Eu preciso de pelo menos umas coordenadas");
-		}else if{
+		};
+		if (argumentos.lenght){
 			if (!argumentos.length ===3){
 				return message.channel.send("XYZ (São 3 coisas) /vai-para <xyz>");
-			}else if{
+			};
+			if(argumentos.length === 3){
 				const data = vec3(argumentos[0], argumentos[1], argumentos[2]);
 				bot.navigate.to(data);
 			};
