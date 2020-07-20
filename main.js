@@ -64,14 +64,12 @@ client.on("message", (message) => {
 		if (!argumentos.length) {
 			return message.channel.send("Eu preciso de pelo menos umas coordenadas");
 		};
-		if (argumentos.lenght){
-			if (!argumentos.length ===3){
-				return message.channel.send("XYZ (São 3 coisas) /vai-para <xyz>");
-			};
-			if(argumentos.length === 3){
-				const data = vec3(argumentos[0], argumentos[1], argumentos[2]);
-				bot.navigate.to(data);
-			};
+		if (!argumentos.length === 3){
+			return message.channel.send("XYZ (São 3 coisas) /vai-para <xyz>");
+		};
+		if(argumentos.length === 3){
+			const data = vec3(argumentos[0], argumentos[1], argumentos[2]);
+			bot.navigate.to(data);
 		};
 	};
 	if (!command === "vai-para"){
