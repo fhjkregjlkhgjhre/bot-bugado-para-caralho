@@ -27,8 +27,6 @@ client.on('message', msg => {
 	mc.send(msg.content)
 });
 
-navigatePlugin(mc);
-
 (function init() {
     console.log("[WORKER] Minecraft -> Iniciando sessão na conta");
     mc._client.once("session", session => options.session = session);
