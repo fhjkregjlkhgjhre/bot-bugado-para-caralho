@@ -23,8 +23,9 @@ let mc;
     mc._client.once("session", session => options.session = session);
     mc.once("end", () => {
         setTimeout(() => {
-            client.user.setActivity("Falhou o login :/");
-            console.log("Falhou ao entrar no server, reconenctando");
+            client.user.setStatus("dnd");
+            client.user.setActivity("falha no login");
+	    console.log("Falhou ao entrar no server, reconenctando");
             init();
         }, 60000);
     });
@@ -36,7 +37,8 @@ mc.on("login", () => {
     uuid = mc._client.session.selectedProfile.id;
     name = mc._client.session.selectedProfile.name;
     setTimeout(() => {
-	client.user.setActivity("Bot Online");
+	client.user.setStatus("online");
+        client.user.setActivity("yah estou online, Nome" + name);
     	console.log("[WORKER] Minecraft -> Ligação completa ao server")
     }, 1000);
     
