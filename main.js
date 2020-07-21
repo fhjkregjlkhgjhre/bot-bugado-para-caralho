@@ -25,7 +25,7 @@ function sendchat(ccn){
 }
 
 client.on('message', msg => {
-    if (msg.author.id === client.user.id && !msg.channel.id === config["channel_id"]) return;
+    if (msg.author.id === client.user.id) return;
     sendchat(msg.content);
     //const minecraft = minecraft
     //minecraft.send(msg.content);
