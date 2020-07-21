@@ -62,13 +62,11 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
-	client.on("message", (message) => {
-		if (!message.content.startsWith(prefix) || message.author.bot) return;
-		const argumentos = message.content.slice(prefix.length).trim().split(/ +/);
-		const command = argumentos.shift().toLowerCase();
-		console.log(command);
-		mc.send("/" + command);
-	});
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
+	const argumentos = message.content.slice(prefix.length).trim().split(/ +/);
+	const command = argumentos.shift().toLowerCase();
+	console.log(command);
+	mc.send("/" + command);
 });
 
 client.login(process.env.discordkey);
