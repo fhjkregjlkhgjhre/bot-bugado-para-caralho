@@ -21,7 +21,7 @@ const minecraft = mineflayer.createBot({
 });
 
 function sendchat(ccn){
-    minecraft.send(ccn);
+    minecraft.chat(ccn);
 }
 
 client.on('message', msg => {
