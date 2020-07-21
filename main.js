@@ -19,7 +19,7 @@ let mc;
 (function init() {
     console.log("[WORKER] Minecraft -> Iniciando sessão na conta");
     mc = mineflayer.createBot(options);
-    navigateBot(mc);
+    navigatePlugin(mc);
     mc._client.once("session", session => options.session = session);
     mc.once("end", () => {
         setTimeout(() => {
