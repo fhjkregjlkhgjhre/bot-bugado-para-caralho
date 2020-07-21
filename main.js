@@ -12,8 +12,8 @@ client.on("ready", () => {
     console.log("[WORKER] Discord -> ON");
 });
 
-const mc = mineflayer.createBot({
-    host: 'redesky.com',
+const minecraft = mineflayer.createBot({
+    host: 'comeeu.mcserv.me',
     port: 25565,
     version: '1.8.9',
     username: "TaNemDFudo",
@@ -21,27 +21,27 @@ const mc = mineflayer.createBot({
 });
 
 client.on('message', msg => {
-	if (!msg.author.bot) return;
-	console.log(msg.content);
-	mc.send(msg.content);
+    if (!msg.author.bot && !msg.channel.id === config["channel_id"]) return;
+    console.log(msg.content);
+    minecraft.send(msg.content);
 });
 
-mc.once('login', () => console.log('logado'));
-navigatePlugin(mc);
+minecraft.once('login', () => console.log('logado'));
+navigatePlugin(minecraft);
 
 /*
-mc.once('spawn', () => {
-	mineflayerViewer(mc, { port: process.env.PORT });
-	console.log(process.env.PORT);
+minecraft.once('spawn', () => {
+    mineflayerViewer(minecraft, { port: process.env.PORT });
+    console.log(process.env.PORT);
 });
 */
 
-mc.on('kicked', function(reason) {
+minecraft.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
 });
-	  
+      
 
-mc.on("message", (chatMsg) => {
+minecraft.on("message", (chatMsg) => {
     const msg = chatMsg.toString();
     console.log(msg);
     client.channels.get(config["channel_id"]).send(msg);
