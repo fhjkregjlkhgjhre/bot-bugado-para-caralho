@@ -7,12 +7,24 @@ const config = require("./config.json");
 
 // minecraft stuff
 const client = new discord.Client({autoReconnect: true}); //Caso que o discord se desligue
+
+// bot stuff
+client.on("ready", () => {
+    console.log("[WORKER] Discord -> ON");
+});
+
 const mc = mineflayer.createBot({
     host: 'redesky.com',
     port: 25565,
     version: '1.8.9',
     username: "TaNemDFudo",
     //password: process.env.password,
+});
+
+client.on("message", (message) => {
+	if (!message.author.bot) return;
+	console.log(message.content);
+	mc.send(message.content);
 });
 
 navigatePlugin(mc);
@@ -48,17 +60,6 @@ mc.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
 });
 	  
-
-// bot stuff
-client.on("ready", () => {
-    console.log("[WORKER] Discord -> ON");
-});
-
-client.on("message", (message) => {
-	if (!message.author.bot) return;
-	console.log(message.content);
-	mc.send(message.content);
-});
 
 mc.on("message", (chatMsg) => {
     const msg = chatMsg.toString();
