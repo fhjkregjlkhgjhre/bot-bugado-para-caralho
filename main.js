@@ -49,10 +49,9 @@ minecraft.on('kicked', function(reason) {
 minecraft.on("message", (chatMsg) => {
     try{
         const msg = chatMsg.toString();
-        var channellog = client.channels.get(config[""]);
-        var guiiild = client.guilds.get(config["guild_id"]).channellog;
-        guiiild.send(msg);
-    }catch(e){console.log("[ERROR]",e)};
+        var canal = client.channels.get(735133986635907113);
+        canal.send(msg);
+    }catch(e){console.log("ERRO ->",e)};
 });
 
 client.login(process.env.discordkey);
