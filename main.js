@@ -5,22 +5,21 @@ const navigatePlugin = require('mineflayer-navigate')(mineflayer);
 const mineflayerViewer = require('prismarine-viewer').mineflayer;
 const config = require("./config.json");
 const prefix = "/"
-
 // minecraft stuff
 const client = new discord.Client({autoReconnect: true}); //Caso que o discord se desligue
-const options = {
+const mc = mineflayer.createBot({
     host: 'redesky.com',
     port: 25565,
     version: '1.8.9',
     username: "TaNemDFudo",
     //password: process.env.password,
-};
+});
+
+navigatePlugin(mc);
 
 const mc;
 (function init() {
     console.log("[WORKER] Minecraft -> Iniciando sessão na conta");
-    mc = mineflayer.createBot(options);
-    navigatePlugin(mc);
     mc._client.once("session", session => options.session = session);
     mc.once("end", () => {
         setTimeout(() => {
