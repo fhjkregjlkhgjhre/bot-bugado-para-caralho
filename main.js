@@ -1,7 +1,7 @@
 const mineflayer = require("mineflayer");
 const discord = require("discord.js");
 const vec3 = require("vec3")
-//const navigatePlugin = require('mineflayer-navigate')(mineflayer);
+const navigatePlugin = require('mineflayer-navigate')(mineflayer);
 const config = require("./config.json");
 const prefix = "/"
 
@@ -19,6 +19,7 @@ let mc;
 (function init() {
     console.log("[WORKER] Minecraft -> Iniciando sessão na conta");
     mc = mineflayer.createBot(options);
+    navigateBot(mc);
     mc._client.once("session", session => options.session = session);
     mc.once("end", () => {
         setTimeout(() => {
