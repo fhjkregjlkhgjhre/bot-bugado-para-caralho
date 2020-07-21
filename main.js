@@ -9,11 +9,10 @@ const prefix = "/"
 // minecraft stuff
 const client = new discord.Client({autoReconnect: true}); //Caso que o discord se desligue
 const options = {
-    host: 'mc.hypixel.net',
+    host: 'redesky.com',
     port: 25565,
     version: '1.8.9',
-    username: process.env.email,
-    password: process.env.password,
+    username: "TaNemDFudo",
 };
 
 let mc;
