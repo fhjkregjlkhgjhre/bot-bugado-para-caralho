@@ -2,6 +2,7 @@ const mineflayer = require("mineflayer");
 const discord = require("discord.js");
 const vec3 = require("vec3");
 const navigatePlugin = require('mineflayer-navigate')(mineflayer);
+const mineflayerViewer = require('prismarine-viewer').mineflayer;
 const config = require("./config.json");
 
 // minecraft stuff
