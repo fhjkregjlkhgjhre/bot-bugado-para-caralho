@@ -51,7 +51,7 @@ minecraft.on("message", (chatMsg) => {
         const msg = chatMsg.toString();
         var channellog = client.channels.get(config["channel_id"]);
         var guiiild = client.guilds.get(config["guild_id"]).channellog;
-        guiiild.send(msg)
+        guiiild.send(msg);
     }catch(e){console.log("[ERROR]",e)};
 });
 
