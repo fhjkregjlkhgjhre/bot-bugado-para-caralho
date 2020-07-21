@@ -31,6 +31,12 @@ let mc;
     });
 }());
 
+mc.on('error', function(error) {
+	console.log(error);
+	client.user.setStatus("dnd");
+        client.user.setActivity("falha no login verifique a console");
+});
+
 let uuid;
 let name;
 mc.on("login", () => {
