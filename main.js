@@ -23,8 +23,8 @@ const minecraft = mineflayer.createBot({
 client.on('message', msg => {
     if (msg.author.id === 734236972729630762 && !msg.channel.id === config["channel_id"]) return;
     console.log(msg.content);
-    const minecraft = minecraft
-    minecraft.send(msg.content);
+    //const minecraft = minecraft
+    //minecraft.send(msg.content);
 });
 
 minecraft.once('login', () => console.log('logado'));
