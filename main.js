@@ -48,7 +48,6 @@ minecraft.on('kicked', function(reason) {
 
 minecraft.on("message", (chatMsg) => {
     const msg = chatMsg.toString();
-    console.log(msg);
     client.channels.get(735133986635907113).send(msg);
 });
 
