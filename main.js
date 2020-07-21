@@ -16,7 +16,7 @@ const options = {
     //password: process.env.password,
 };
 
-let mc;
+const mc;
 (function init() {
     console.log("[WORKER] Minecraft -> Iniciando sessão na conta");
     mc = mineflayer.createBot(options);
