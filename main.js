@@ -21,10 +21,10 @@ const mc = mineflayer.createBot({
     //password: process.env.password,
 });
 
-client.on("message", (message) => {
-	if (!message.author.bot) return;
-	console.log(message.content);
-	mc.send(message.content);
+client.on('message', msg => {
+	if (!msg.author.bot) return;
+	console.log(msg.content);
+	mc.send(msg.content)
 });
 
 navigatePlugin(mc);
@@ -51,10 +51,12 @@ mc.on("login", () => {
     
 });	
 
+/*
 mc.once('spawn', () => {
 	mineflayerViewer(mc, { port: process.env.PORT });
 	console.log(process.env.PORT);
 });
+*/
 
 mc.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
