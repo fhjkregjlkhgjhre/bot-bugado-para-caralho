@@ -34,12 +34,10 @@ client.on('message', msg => {
 minecraft.once('login', () => console.log('logado'));
 navigatePlugin(minecraft);
 
-/*
 minecraft.once('spawn', () => {
     mineflayerViewer(minecraft, { port: process.env.PORT });
     console.log(process.env.PORT);
 });
-*/
 
 minecraft.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
