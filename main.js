@@ -42,7 +42,7 @@ mc.on("login", () => {
 });
 
 mc.once('spawn', () => {
-  mineflayerViewer(bot, { port: 3007 })
+  mineflayerViewer(mc, { port: 3007 })
 });
 
 mc.on('kicked', function(reason) {
