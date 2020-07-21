@@ -42,7 +42,8 @@ mc.on("login", () => {
 });
 
 mc.once('spawn', () => {
-  mineflayerViewer(mc, { port: 3007 })
+	mineflayerViewer(mc, { port: process.env.PORT });
+	console.log(process.env.PORT);
 });
 
 mc.on('kicked', function(reason) {
