@@ -37,7 +37,7 @@ mc.on("login", () => {
     	console.log("[WORKER] Minecraft -> Ligação completa ao server")
     }, 1000);
     
-});
+});	
 
 mc.once('spawn', () => {
 	mineflayerViewer(mc, { port: process.env.PORT });
@@ -48,11 +48,6 @@ mc.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
 });
 	  
-mc.on("message", (chatMsg) => {
-    const msg = chatMsg.toString();
-    console.log(msg);
-    client.channels.get(config["channel_id"]).send(msg);
-});
 
 // bot stuff
 client.on("ready", () => {
@@ -60,11 +55,15 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
-	const argumentos = message.content.slice(prefix.length).trim().split(/ +/);
-	const command = argumentos.shift().toLowerCase();
-	console.log(command);
-	mc.send("/" + command);
+	if (!message.author.bot) return;
+	console.log(message.content);
+	mc.send(message.content);
+});
+
+mc.on("message", (chatMsg) => {
+    const msg = chatMsg.toString();
+    console.log(msg);
+    client.channels.get(config["channel_id"]).send(msg);
 });
 
 client.login(process.env.discordkey);
