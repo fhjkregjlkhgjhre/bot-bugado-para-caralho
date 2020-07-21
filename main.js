@@ -13,13 +13,37 @@ client.on("ready", () => {
     console.log("[WORKER] Discord -> ON");
 });
 
-const minecraft = mineflayer.createBot({
+const options = {
     host: 'comeeu.mcserv.me',
     port: 25565,
     version: '1.8.9',
     username: "TaNemDFudo",
     //password: process.env.password,
+};
+
+let minecraft;
+(function init() {
+    console.log("Logging in.");
+    minecraft = mineflayer.createBot(options);
+    //minecraft._client.once("session", session => options.session = session);
+    minecraft.once("end", () => {
+        setTimeout(() => {
+            console.log("Conecção falhada...");
+            init();
+        }, 60000);
+    });
+}());
+
+let uuid;
+let name;
+minecraft.on("login", () => {
+    //uuid = mc._client.session.selectedProfile.id;
+    //name = mc._client.session.selectedProfile.name;
+    setTimeout(() => {
+        console.log("Bot on.");
+    }, 1000);
 });
+
 
 function sendchat(ccn){
     minecraft.chat(ccn);
@@ -27,13 +51,23 @@ function sendchat(ccn){
 
 client.on('message', msg => {
     if (msg.author.id === client.user.id) return; 
-    if (!msg.channel.id === config["channel_id"]) return;
+    if (msg.content.indexOf(config.prefix) !== 0) return
+    const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+    
+    if (command == "vai-para"){
+        const pt = vec3(
+            parseFloat(args[1], 10),
+            parseFloat(args[2], 10),
+            parseFloat(args[3], 10)
+        )
+        bot.navigate.to(pt)
+    }
     sendchat(msg.content);
     //const minecraft = minecraft
     //minecraft.send(msg.content);
 });
 
-minecraft.once('login', () => console.log('logado'));
 navigatePlugin(minecraft);
 
 minecraft.once('spawn', () => {
@@ -43,6 +77,7 @@ minecraft.once('spawn', () => {
 
 minecraft.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
+  init();
 });
       
 
