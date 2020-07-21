@@ -63,24 +63,12 @@ client.on("ready", () => {
 
 client.on("message", (message) => {
 	client.on("message", (message) => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
-	const argumentos = message.content.slice(prefix.length).trim().split(/ +/);
-	const command = argumentos.shift().toLowerCase();
-	if (command === 'vai-para') {
-		console.log(argumentos.lenght)
-		if (!argumentos.length){
-			return message.channel.send("XYZ (São 3 coisas) /vai-para <xyz>");
-		};
-		if(argumentos.length === 3){
-			const data = vec3(argumentos[0], argumentos[1], argumentos[2]);
-			mc.navigate.to(data);
-		};
-	};
-	if (!command === "vai-para"){
-		console.log(command)
-		mc.send("/" + command)
-	};
-});
+		if (!message.content.startsWith(prefix) || message.author.bot) return;
+		const argumentos = message.content.slice(prefix.length).trim().split(/ +/);
+		const command = argumentos.shift().toLowerCase();
+		console.log(command);
+		mc.send("/" + command);
+	});
 });
 
 client.login(process.env.discordkey);
