@@ -13,6 +13,7 @@ const options = {
     port: 25565,
     version: '1.8.9',
     username: "TaNemDFudo",
+    //password: process.env.password,
 };
 
 let mc;
@@ -32,8 +33,8 @@ let mc;
 let uuid;
 let name;
 mc.on("login", () => {
-    uuid = mc._client.session.selectedProfile.id;
-    name = mc._client.session.selectedProfile.name;
+    //uuid = mc._client.session.selectedProfile.id;
+    //name = mc._client.session.selectedProfile.name;
     setTimeout(() => {
     	console.log("[WORKER] Minecraft -> Ligação completa ao server")
     }, 1000);
