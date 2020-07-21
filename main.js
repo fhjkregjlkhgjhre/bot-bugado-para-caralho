@@ -26,7 +26,7 @@ client.on('message', msg => {
 	mc.send(msg.content);
 });
 
-bot.once('login', () => console.log('logado');
+bot.once('login', () => console.log('logado'));
 navigatePlugin(mc);
 
 /*
