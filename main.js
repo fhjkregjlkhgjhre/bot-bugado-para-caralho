@@ -12,8 +12,6 @@ client.on("ready", () => {
     console.log("[WORKER] Discord -> ON");
 });
 
-navigatePlugin(mc);
-
 const mc = mineflayer.createBot({
     host: 'redesky.com',
     port: 25565,
@@ -25,30 +23,11 @@ const mc = mineflayer.createBot({
 client.on('message', msg => {
 	if (!msg.author.bot) return;
 	console.log(msg.content);
-	mc.send(msg.content)
+	mc.send(msg.content);
 });
 
-(function init() {
-    console.log("[WORKER] Minecraft -> Iniciando sessão na conta");
-    mc._client.once("session", session => options.session = session);
-    mc.once("end", () => {
-        setTimeout(() => {
-	    console.log("Falhou ao entrar no server, reconenctando");
-            init();
-        }, 60000);
-    });
-}());
-
-let uuid;
-let name;
-mc.on("login", () => {
-    //uuid = mc._client.session.selectedProfile.id;
-    //name = mc._client.session.selectedProfile.name;
-    setTimeout(() => {
-    	console.log("[WORKER] Minecraft -> Ligação completa ao server")
-    }, 1000);
-    
-});	
+bot.once('login', () => console.log('logado');
+navigatePlugin(mc);
 
 /*
 mc.once('spawn', () => {
