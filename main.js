@@ -17,7 +17,6 @@ const mc = mineflayer.createBot({
 
 navigatePlugin(mc);
 
-const mc;
 (function init() {
     console.log("[WORKER] Minecraft -> Iniciando sessão na conta");
     mc._client.once("session", session => options.session = session);
