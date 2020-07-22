@@ -3,12 +3,8 @@ const discord = require("discord.js");
 const vec3 = require("vec3");
 const navigatePlugin = require('mineflayer-navigate')(mineflayer);
 const config = require("./config.json");
-const prefix = "-"
-
-// minecraft stuff
 const client = new discord.Client({autoReconnect: true}); //Caso que o discord se desligue
 
-// bot stuff
 client.on("ready", () => {
     console.log("[WORKER] Discord -> ON");
 });
@@ -38,6 +34,18 @@ function hypixelafk(){
     minecraft.navigate.to(directions);
 };
 
+minecraft.on("kicked", function(reason) {
+  client.channels.get(config["channel_id"]).send("```\nKicado do server\n```" + reason);
+});
+
+minecraft.on("message", (chatMsg) => {
+    try{
+        const msg = chatMsg.toString();
+        var canal = client.channels.get('735133986635907113');
+        canal.send(msg);
+    }catch(e){console.log("ERRO -> ",e)};
+});
+
 client.on('message', msg => {
     if (msg.author.id === client.user.id) return;
     if (msg.content === "sbafk"){
@@ -49,18 +57,6 @@ client.on('message', msg => {
     };
     //const minecraft = minecraft
     //minecraft.send(msg.content);
-});
-
-minecraft.on('kicked', function(reason) {
-  client.channels.get(config["channel_id"]).send("> Kicado do server\n" + reason);
-});
-
-minecraft.on("message", (chatMsg) => {
-    try{
-        const msg = chatMsg.toString();
-        var canal = client.channels.get('735133986635907113');
-        canal.send(msg);
-    }catch(e){console.log("ERRO -> ",e)};
 });
 
 client.login(process.env.discordkey);
