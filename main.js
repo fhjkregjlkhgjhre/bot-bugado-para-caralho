@@ -34,9 +34,11 @@ function hypixelafk(){
     minecraft.navigate.to(directions);
 };
 
+/*
 minecraft.on("kicked", function(reason) {
   client.channels.get(config["channel_id"]).send("```\nKicado do server\n```" + reason);
 });
+*/
 
 minecraft.on("message", (chatMsg) => {
     try{
