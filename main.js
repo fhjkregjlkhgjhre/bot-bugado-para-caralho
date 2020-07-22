@@ -12,15 +12,13 @@ client.on("ready", () => {
     console.log("[WORKER] Discord -> ON");
 });
 
-function createBot(){
-    const minecraft = mineflayer.createBot({
+const minecraft = mineflayer.createBot({
         host: 'comeeu.mcserv.me',
         port: 25565,
         version: '1.8.9',
         username: "TaNemDFudo",
         //password: process.env.password,
-    });
-};
+});
 
 function sendchat(ccn){
     minecraft.chat(ccn);
