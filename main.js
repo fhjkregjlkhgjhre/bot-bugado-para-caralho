@@ -42,7 +42,8 @@ client.on('message', msg => {
 		});
         	msg.channel.send("Entrando no server"); 
     } else {
-        sendchat(msg.content);
+	    console.log(msg.content);
+            sendchat(msg.content);
     }
 });
 
