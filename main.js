@@ -46,7 +46,7 @@ client.on('message', msg => {
     }
     else {
         sendchat(msg.content);
-    }
+    };
     //const minecraft = minecraft
     //minecraft.send(msg.content);
 });
