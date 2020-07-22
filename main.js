@@ -2,7 +2,6 @@ const mineflayer = require("mineflayer");
 const discord = require("discord.js");
 const vec3 = require("vec3");
 const navigatePlugin = require('mineflayer-navigate')(mineflayer);
-const mineflayerViewer = require('prismarine-viewer').mineflayer;
 const config = require("./config.json");
 const prefix = "-"
 
@@ -26,9 +25,8 @@ let minecraft;
 function createBot() {
     console.log("Entrando...");
     minecraft = mineflayer.createBot(options);
+    navigatePlugin(minecraft);
 };
-
-navigatePlugin(minecraft);
 
 function sendchat(ccn){
     minecraft.chat(ccn);
