@@ -61,7 +61,7 @@ client.on('message', msg => {
         hypixelafk();
         msg.channel.send("Iniciando modo afk");
     }
-    else if {
+    else {
         sendchat(msg.content);
     }
     //const minecraft = minecraft
