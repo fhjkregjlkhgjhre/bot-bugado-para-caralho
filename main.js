@@ -42,9 +42,17 @@ function hypixelafk(){
 
 client.on('message', msg => {
     if (msg.author.id === client.user.id) return;
-    if (msg.content === "starthypixelafk"){
+    if (msg.content === "sbafk"){
         hypixelafk();
         msg.channel.send("Iniciando modo afk");
+    };
+    if (msg.content === "quit"){
+        bot.quit();
+        msg.channel.send("Sai do server")
+    };
+    if (msg.content === "join"){
+        createBot();
+        msg.channel.send("Entrei no server")
     }
     else {
         sendchat(msg.content);
