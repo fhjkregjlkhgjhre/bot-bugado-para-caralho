@@ -32,11 +32,11 @@ client.on('message', msg => {
         hypixelafk();
         msg.channel.send("Iniciando modo afk"); 
     }
-    elif (msg.content === "quit"){
+    if (msg.content === "quit"){
         bot.quit();
         msg.channel.send("Saindo do server"); 
     }
-    elif (msg.content === "join"){
+    if (msg.content === "join"){
         bot.quit();
         msg.channel.send("Entrando no server"); 
     }else{
