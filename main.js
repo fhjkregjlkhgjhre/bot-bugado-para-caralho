@@ -24,7 +24,7 @@ const options = {
 
 let minecraft;
 (function init() {
-    console.log("Logging in.");
+    console.log("Entrando...");
     minecraft = mineflayer.createBot(options);
     //minecraft._client.once("session", session => options.session = session);
     minecraft.once("end", () => {
@@ -52,7 +52,7 @@ function sendchat(ccn){
 function hypixelafk(){
     sendchat("/play sb");
     const directions = vec3(0,0,0);
-    bot.navigate.to(directions);
+    minecraft.navigate.to(directions);
 };
 
 client.on('message', msg => {
