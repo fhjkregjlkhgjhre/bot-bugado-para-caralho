@@ -57,12 +57,6 @@ minecraft.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Kicado do server\n" + reason);
 });
 
-minecraft.on("login", function() {
-    console.log("Bot on.");
-    client.channels.get(config["channel_id"]).send("> Bot Ligado ");
-});
-
-
 minecraft.on("message", (chatMsg) => {
     try{
         const msg = chatMsg.toString();
