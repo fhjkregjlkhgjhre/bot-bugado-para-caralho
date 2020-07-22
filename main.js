@@ -46,11 +46,11 @@ client.on('message', msg => {
     };
     if (msg.content === "quit"){
         bot.quit();
-        msg.channel.send("Sai do server")
+        msg.channel.send("Sai do server");
     };
     if (msg.content === "join"){
         createBot();
-        msg.channel.send("Entrei no server")
+        msg.channel.send("Entrei no server");
     }
     else {
         sendchat(msg.content);
