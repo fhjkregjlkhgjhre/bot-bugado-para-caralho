@@ -13,11 +13,11 @@ client.on("ready", () => {
 });
 
 const minecraft = mineflayer.createBot({
-        host: 'comeeu.mcserv.me',
+        host: 'hypixel.net',
         port: 25565,
         version: '1.8.9',
-        username: "TaNemDFudo",
-        //password: process.env.password,
+        username: process.env.email,
+        password: process.env.password,
 });
 
 function sendchat(ccn){
