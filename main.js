@@ -20,7 +20,7 @@ function createBot(){
         username: "TaNemDFudo",
         //password: process.env.password,
     });
-}
+};
 
 function sendchat(ccn){
     minecraft.chat(ccn);
@@ -28,18 +28,16 @@ function sendchat(ccn){
 
 client.on('message', msg => {
     if (msg.author.id === client.user.id) return;
-    if (msg.content === "sbafk"){
-        hypixelafk();
-        msg.channel.send("Iniciando modo afk"); 
-    }
-    else if (msg.content === "quit"){
-        bot.quit();
-        msg.channel.send("Saindo do server"); 
-    }
-    else if (msg.content === "join"){
-        bot.quit();
+    if (msg.content === 'sbafk') {
+		hypixelafk();
+        msg.channel.send("Iniciando modo afk");
+	} else if (msg.content === 'quit') {
+		bot.quit();
+        msg.channel.send("Saindo do server");
+	} else if (msg.content === "join") {
+        createBot();
         msg.channel.send("Entrando no server"); 
-    }else{
+    } else {
         sendchat(msg.content);
     }
 });
