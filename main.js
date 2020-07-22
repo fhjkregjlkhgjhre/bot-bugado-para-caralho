@@ -28,10 +28,6 @@ function createBot() {
     minecraft = mineflayer.createBot(options);
 };
 
-minecraft.on("login", () => {
-    console.log("Bot on.");
-});
-
 function sendchat(ccn){
     minecraft.chat(ccn);
 };
@@ -60,6 +56,12 @@ navigatePlugin(minecraft);
 minecraft.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Kicado do server\n" + reason);
 });
+
+minecraft.on("login", function() {
+    console.log("Bot on.");
+    client.channels.get(config["channel_id"]).send("> Bot Ligado ");
+});
+
 
 minecraft.on("message", (chatMsg) => {
     try{
