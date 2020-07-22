@@ -12,14 +12,15 @@ client.on("ready", () => {
     console.log("[WORKER] Discord -> ON");
 });
 
-const minecraft = mineflayer.createBot({
-    host: 'comeeu.mcserv.me',
-    port: 25565,
-    version: '1.8.9',
-    username: "TaNemDFudo",
-    //password: process.env.password,
-});
-
+function createBot(){
+    const minecraft = mineflayer.createBot({
+        host: 'comeeu.mcserv.me',
+        port: 25565,
+        version: '1.8.9',
+        username: "TaNemDFudo",
+        //password: process.env.password,
+    });
+}
 
 function sendchat(ccn){
     minecraft.chat(ccn);
@@ -30,6 +31,14 @@ client.on('message', msg => {
     if (msg.content === "sbafk"){
         hypixelafk();
         msg.channel.send("Iniciando modo afk"); 
+    }
+    elif (msg.content === "quit"){
+        bot.quit();
+        msg.channel.send("Saindo do server"); 
+    }
+    elif (msg.content === "join"){
+        bot.quit();
+        msg.channel.send("Entrando no server"); 
     }else{
         sendchat(msg.content);
     }
