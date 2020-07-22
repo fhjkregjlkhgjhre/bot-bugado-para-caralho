@@ -51,8 +51,8 @@ function sendchat(ccn){
 
 client.on('message', msg => {
     if (msg.author.id === client.user.id) return; 
-    if (msg.content.indexOf(config.prefix) !== 0) return
-    const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
+    if (msg.content.indexOf(config.prefix) !== 0) return;
+    const args = msg.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     
     if (command == "vai-para"){
@@ -61,9 +61,11 @@ client.on('message', msg => {
             parseFloat(args[2], 10),
             parseFloat(args[3], 10)
         )
-        bot.navigate.to(pt)
+        bot.navigate.to(pt);
     }
-    sendchat(msg.content);
+    if (!command == "vai-para"){
+        sendchat(msg.content);   
+    }
     //const minecraft = minecraft
     //minecraft.send(msg.content);
 });
