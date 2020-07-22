@@ -21,7 +21,6 @@ let minecraft;
 function createBot() {
     console.log("Entrando...");
     minecraft = mineflayer.createBot(options);
-    navigatePlugin(minecraft);
 };
 
 function sendchat(ccn){
