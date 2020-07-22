@@ -4,6 +4,7 @@ const vec3 = require("vec3");
 const navigatePlugin = require('mineflayer-navigate')(mineflayer);
 const mineflayerViewer = require('prismarine-viewer').mineflayer;
 const config = require("./config.json");
+const prefix = "-"
 
 // minecraft stuff
 const client = new discord.Client({autoReconnect: true}); //Caso que o discord se desligue
@@ -44,27 +45,24 @@ minecraft.on("login", () => {
     }, 1000);
 });
 
-
 function sendchat(ccn){
     minecraft.chat(ccn);
-}
+};
+
+function hypixelafk(){
+    sendchat("/play sb");
+    const directions = vec3(0,0,0);
+    bot.navigate.to(directions);
+};
 
 client.on('message', msg => {
-    if (msg.author.id === client.user.id) return; 
-    if (msg.content.indexOf(config.prefix) !== 0) return;
-    const args = msg.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-    
-    if (command == "vai-para"){
-        const pt = vec3(
-            parseFloat(args[1], 10),
-            parseFloat(args[2], 10),
-            parseFloat(args[3], 10)
-        )
-        bot.navigate.to(pt);
+    if (msg.author.id === client.user.id) return;
+    if (msg.content === "starthypixelafk"){
+        hypixelafk();
+        msg.channel.send("Iniciando modo afk");
     }
-    if (!command == "vai-para"){
-        sendchat(msg.content);   
+    else if {
+        sendchat(msg.content);
     }
     //const minecraft = minecraft
     //minecraft.send(msg.content);
