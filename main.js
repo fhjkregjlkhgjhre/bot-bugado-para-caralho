@@ -28,6 +28,8 @@ function createBot() {
     minecraft = mineflayer.createBot(options);
 };
 
+navigatePlugin(minecraft);
+
 function sendchat(ccn){
     minecraft.chat(ccn);
 };
@@ -50,8 +52,6 @@ client.on('message', msg => {
     //const minecraft = minecraft
     //minecraft.send(msg.content);
 });
-
-navigatePlugin(minecraft);
 
 minecraft.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Kicado do server\n" + reason);
