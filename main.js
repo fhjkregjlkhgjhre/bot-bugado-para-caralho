@@ -33,7 +33,13 @@ client.on('message', msg => {
 		minecraft.quit();
         	msg.channel.send("Saindo do server");
 	} else if (msg.content === "join") {
-        	minecraft();
+        	mineflayer.createBot({
+        		host: 'comeeu.mcserv.me',
+        		port: 25565,
+        		version: '1.8.9',
+        		username: "TaNemDFudo",
+       		 	//password: process.env.password,
+		});
         	msg.channel.send("Entrando no server"); 
     } else {
         sendchat(msg.content);
