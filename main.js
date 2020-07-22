@@ -28,7 +28,9 @@ function createBot() {
     minecraft = mineflayer.createBot(options);
 };
 
-minecraft.on("login", () => {console.log("Bot on.")});
+minecraft.on("login", () => {
+    console.log("Bot on.");
+});
 
 function sendchat(ccn){
     minecraft.chat(ccn);
