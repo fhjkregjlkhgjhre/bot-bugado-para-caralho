@@ -28,13 +28,13 @@ client.on('message', msg => {
     if (msg.author.id === client.user.id) return;
     if (msg.content === 'sbafk') {
 		hypixelafk();
-        msg.channel.send("Iniciando modo afk");
+        	msg.channel.send("Iniciando modo afk");
 	} else if (msg.content === 'quit') {
-		bot.quit();
-        msg.channel.send("Saindo do server");
+		minecraft.quit();
+        	msg.channel.send("Saindo do server");
 	} else if (msg.content === "join") {
-        createBot();
-        msg.channel.send("Entrando no server"); 
+        	minecraft();
+        	msg.channel.send("Entrando no server"); 
     } else {
         sendchat(msg.content);
     }
