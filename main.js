@@ -23,27 +23,12 @@ const options = {
 };
 
 let minecraft;
-(function init() {
+function createBot() {
     console.log("Entrando...");
     minecraft = mineflayer.createBot(options);
-    //minecraft._client.once("session", session => options.session = session);
-    minecraft.once("end", () => {
-        setTimeout(() => {
-            console.log("Conecção falhada...");
-            init();
-        }, 60000);
-    });
-}());
+};
 
-let uuid;
-let name;
-minecraft.on("login", () => {
-    //uuid = mc._client.session.selectedProfile.id;
-    //name = mc._client.session.selectedProfile.name;
-    setTimeout(() => {
-        console.log("Bot on.");
-    }, 1000);
-});
+minecraft.on("login", () => {console.log("Bot on.")});
 
 function sendchat(ccn){
     minecraft.chat(ccn);
@@ -70,16 +55,9 @@ client.on('message', msg => {
 
 navigatePlugin(minecraft);
 
-minecraft.once('spawn', () => {
-    mineflayerViewer(minecraft, { port: process.env.PORT });
-    console.log(process.env.PORT);
-});
-
 minecraft.on('kicked', function(reason) {
-  client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
-  init();
+  client.channels.get(config["channel_id"]).send("> Kicado do server\n" + reason);
 });
-      
 
 minecraft.on("message", (chatMsg) => {
     try{
