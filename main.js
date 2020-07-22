@@ -13,7 +13,7 @@ client.on("ready", () => {
 });
 
 const minecraft = mineflayer.createBot({
-        host: 'hypixel.net',
+        host: process.env.ipmine,
         port: 25565,
         version: '1.8.9',
         username: process.env.email,
@@ -34,11 +34,11 @@ client.on('message', msg => {
         	msg.channel.send("Saindo do server");
 	} else if (msg.content === "join") {
         	mineflayer.createBot({
-        		host: 'comeeu.mcserv.me',
+        		host: process.env.ipmine,
         		port: 25565,
         		version: '1.8.9',
-        		username: "TaNemDFudo",
-       		 	//password: process.env.password,
+        		username: process.env.email,
+       		 	password: process.env.password,
 		});
         	msg.channel.send("Entrando no server"); 
     } else {
