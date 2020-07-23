@@ -22,7 +22,7 @@ const minecraft = mineflayer.createBot({
 
 function hypixelafk(){
 	minecraft.chat("/play sb");
-	const pt = vec3(0 , 0, 0);
+	const pt = vec3(43,64,175);
 	bot.navigate.to(pt);
 };
 
@@ -44,18 +44,12 @@ minecraft.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
 });
 
-minecraft.on("message", (chatMsg,username) => {
+minecraft.on("message", (chatMsg) => {
     try{
 	console.log(chatMsg);
         const msg = chatMsg.toString();
-        if (username === minecraft.username) return;
-  	const target = minecraft.players[username].entity;
-	if (msg === 'vem') {
-    		minecraft.navigate.to(target.position);
-	}else {
-		var canal = client.channels.get('735133986635907113');
-        	canal.send(msg);
-	}
+	var canal = client.channels.get('735133986635907113');
+        canal.send(msg);
     }catch(e){console.log("ERRO -> ",e)};
 });
 
