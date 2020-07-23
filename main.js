@@ -44,11 +44,18 @@ minecraft.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
 });
 
-minecraft.on("message", (chatMsg) => {
+minecraft.on("message", (chatMsg,username) => {
     try{
+	console.log(chatMsg);
         const msg = chatMsg.toString();
-        var canal = client.channels.get('735133986635907113');
-        canal.send(msg);
+        if (username === bot.username) return;
+  	const target = bot.players[username].entity;
+	if (msg === 'vem') {
+    		bot.navigate.to(target.position);
+	}else {
+		var canal = client.channels.get('735133986635907113');
+        	canal.send(msg);
+	}
     }catch(e){console.log("ERRO -> ",e)};
 });
 
