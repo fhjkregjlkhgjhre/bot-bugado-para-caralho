@@ -48,8 +48,8 @@ minecraft.on("message", (chatMsg,username) => {
     try{
 	console.log(chatMsg);
         const msg = chatMsg.toString();
-        if (username === bot.username) return;
-  	const target = bot.players[username].entity;
+        if (username === minecraft.username) return;
+  	const target = minecraft.players[username].entity;
 	if (msg === 'vem') {
     		minecraft.navigate.to(target.position);
 	}else {
