@@ -29,7 +29,7 @@ function createBot (){
 			minecraft.quit();
         		msg.channel.send("Saindo do server");
 		} else if (msg.content === "join") {
-			init();
+			createBot();
         		msg.channel.send("Entrando no server"); 
     		} else {
 	    		console.log(msg.content);
