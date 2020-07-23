@@ -51,7 +51,7 @@ minecraft.on("message", (chatMsg,username) => {
         if (username === bot.username) return;
   	const target = bot.players[username].entity;
 	if (msg === 'vem') {
-    		bot.navigate.to(target.position);
+    		minecraft.navigate.to(target.position);
 	}else {
 		var canal = client.channels.get('735133986635907113');
         	canal.send(msg);
