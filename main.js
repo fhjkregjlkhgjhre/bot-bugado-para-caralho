@@ -47,7 +47,7 @@ client.on('message', msg => {
     }
 });
 
-minecraft.once('login', () => console.log('logado'));
+minecraft.on('login', () => console.log('logado'));
 navigatePlugin(minecraft);
 
 minecraft.on('kicked', function(reason) {
