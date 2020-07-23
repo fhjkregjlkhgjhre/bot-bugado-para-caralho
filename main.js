@@ -26,7 +26,7 @@ function createBot (){
 			hypixelafk();
         		msg.channel.send("Iniciando modo afk");
 		} else if (msg.content === 'quit') {
-			minecraft.quit();
+			setTimeout(minecraft.quit(), 1000);
         		msg.channel.send("Saindo do server");
 		} else if (msg.content === "join") {
 			setTimeout(createBot, 1000);
