@@ -21,10 +21,10 @@ const options = {
 };
 
 let minecraft;
-(function init() {
+function init() {
     console.log("Entrando.");
     minecraft = mineflayer.createBot(options);
-}());
+}();
 
 function sendchat(ccn){
     minecraft.chat(ccn);
@@ -39,13 +39,7 @@ client.on('message', msg => {
 		minecraft.quit();
         	msg.channel.send("Saindo do server");
 	} else if (msg.content === "join") {
-        	mineflayer.createBot({
-        		host: process.env.ipmine,
-        		port: 25565,
-        		version: '1.8.9',
-        		username: process.env.email,
-       		 	password: process.env.password,
-		});
+		init();
         	msg.channel.send("Entrando no server"); 
     } else {
 	    console.log(msg.content);
