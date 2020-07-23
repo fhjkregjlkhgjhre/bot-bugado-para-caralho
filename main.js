@@ -29,8 +29,7 @@ function createBot (){
 			minecraft.quit();
         		msg.channel.send("Saindo do server");
 		} else if (msg.content === "join") {
-			createBot();
-			setInterval(createBot, 1000);
+			setTimeout(createBot, 1000);
         		msg.channel.send("Entrando no server"); 
     		} else {
 	    		console.log(msg.content);
@@ -51,7 +50,9 @@ function createBot (){
         		canal.send(msg);
     		}catch(e){console.log("ERRO -> ",e)};
 	});
-
+	minecraft.on('error', function(err) {
+		console.log(err.code);
+    	});
 };
 
 client.login(process.env.discordkey);
