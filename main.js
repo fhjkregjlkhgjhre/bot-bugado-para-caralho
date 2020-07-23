@@ -1,6 +1,6 @@
 const mineflayer = require("mineflayer");
 const discord = require("discord.js");
-const vec3 = require("vec3");
+var v = require("vec3");
 const navigatePlugin = require('mineflayer-navigate')(mineflayer);
 const config = require("./config.json");
 
@@ -22,7 +22,7 @@ const minecraft = mineflayer.createBot({
 
 function hypixelafk(){
 	minecraft.chat("/play sb");
-	const coords = vec3(43.405,64.0,175.484);
+	const coords = v(43, 64,175);
 	minecraft.navigate.walk(coords);
 };
 
