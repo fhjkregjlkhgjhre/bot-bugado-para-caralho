@@ -30,6 +30,7 @@ function createBot (){
         		msg.channel.send("Saindo do server");
 		} else if (msg.content === "join") {
 			createBot();
+			setInterval(createBot, 1000);
         		msg.channel.send("Entrando no server"); 
     		} else {
 	    		console.log(msg.content);
