@@ -22,8 +22,8 @@ const minecraft = mineflayer.createBot({
 
 function hypixelafk(){
 	minecraft.chat("/play sb");
-	const pt = vec3(43,64,175);
-	minecraft.navigate.to(pt);
+	const coords = vec3(43,64,175);
+	minecraft.navigate.walk(coords);
 };
 
 client.on('message', msg => {
@@ -33,7 +33,7 @@ client.on('message', msg => {
             msg.channel.send("Iniciando modo afk");
     }else {
         console.log(msg.content);
-            sendchat(msg.content);
+            minecraft.chat(msg.content);
     }
 });
 
@@ -46,7 +46,6 @@ minecraft.on('kicked', function(reason) {
 
 minecraft.on("message", (chatMsg) => {
     try{
-	console.log(chatMsg);
         const msg = chatMsg.toString();
 	var canal = client.channels.get('735133986635907113');
         canal.send(msg);
