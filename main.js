@@ -22,7 +22,7 @@ const minecraft = mineflayer.createBot({
 
 function hypixelafk(){
 	minecraft.chat("/play sb");
-	const coords = v(43, 64,175);
+	const coords = v(43, 64, 175);
 	minecraft.navigate.walk(coords);
 };
 
