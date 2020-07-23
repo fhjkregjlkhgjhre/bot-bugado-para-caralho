@@ -12,13 +12,19 @@ client.on("ready", () => {
     console.log("[WORKER] Discord -> ON");
 });
 
-const minecraft = mineflayer.createBot({
+const options = {
         host: process.env.ipmine,
         port: 25565,
         version: '1.8.9',
         username: process.env.email,
         password: process.env.password,
-});
+};
+
+let minecraft;
+(function init() {
+    console.log("Entrando.");
+    minecraft = mineflayer.createBot(options);
+}());
 
 function sendchat(ccn){
     minecraft.chat(ccn);
