@@ -23,7 +23,7 @@ const minecraft = mineflayer.createBot({
 function hypixelafk(){
 	minecraft.chat("/play sb");
 	const pt = vec3(43,64,175);
-	bot.navigate.to(pt);
+	minecraft.navigate.to(pt);
 };
 
 client.on('message', msg => {
