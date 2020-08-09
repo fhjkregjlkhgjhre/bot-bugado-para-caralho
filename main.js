@@ -51,5 +51,8 @@ minecraft.on("message", (chatMsg) => {
 	canal.send(msg);
     }catch(e){console.log("ERRO -> ",e)};
 });
+/*
+remind to check the notes 
+*/
 
 client.login(process.env.discordkey);
