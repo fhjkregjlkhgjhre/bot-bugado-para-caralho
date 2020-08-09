@@ -47,8 +47,8 @@ minecraft.on('kicked', function(reason) {
 minecraft.on("message", (chatMsg) => {
     try{
 	var canal = client.channels.get('735133986635907113');
-        console.log(msg);
 	const msg = chatMsg.toString();
+	console.log(msg);
 	if (chatMsg.clickEvent) {
 		console.log(chatMsg.clickEvent.action());
 	};
