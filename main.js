@@ -48,10 +48,7 @@ minecraft.on("message", (chatMsg) => {
     try{
 	var canal = client.channels.get('735133986635907113');
 	const msg = chatMsg.toString();
-	if (chatMsg.clickEvent) {
-		minecraft.chat(chatMsg.clickEvent.action.value);
-	};
-	canal.send(msg)
+	canal.send(msg);
     }catch(e){console.log("ERRO -> ",e)};
 });
 
