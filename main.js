@@ -44,6 +44,10 @@ minecraft.on('kicked', function(reason) {
   client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
 });
 
+minecraft.on('end'){
+	client.channels.get(config["channel_id"]).send("```css\n[Erro na coneçao com o server]\n```")
+};
+
 minecraft.on("message", (chatMsg) => {
     try{
     	console.log(chatMsg)
