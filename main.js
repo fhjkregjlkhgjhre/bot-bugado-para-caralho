@@ -46,11 +46,13 @@ minecraft.on('kicked', function(reason) {
 
 minecraft.on("message", (chatMsg) => {
     try{
-	var canal = client.channels.get('735133986635907113');
-	const msg = chatMsg.toString();
-	canal.send(msg);
+    	console.log(chatMsg)
+		var canal = client.channels.get('735133986635907113');
+		const msg = chatMsg.toString();
+		canal.send(msg);
     }catch(e){console.log("ERRO -> ",e)};
 });
+
 /*
 remind to check the notes 
 */
