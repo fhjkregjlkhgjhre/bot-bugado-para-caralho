@@ -4,8 +4,7 @@ var v = require("vec3");
 const navigatePlugin = require('mineflayer-navigate')(mineflayer);
 const config = require("./config.json");
 
-// minecraft stuff
-const client = new discord.Client({autoReconnect: true}); //Caso que o discord se desligue
+const client = new discord.Client();
 
 // bot stuff
 client.on("ready", () => {
@@ -19,6 +18,8 @@ const minecraft = mineflayer.createBot({
             username: process.env.email,
             password: process.env.password,
 });
+
+navigatePlugin(minecraft);
 
 function hypixelafk(){
 	minecraft.chat("/play sb");
@@ -38,14 +39,9 @@ client.on('message', msg => {
 });
 
 minecraft.on('login', () => console.log('logado'));
-navigatePlugin(minecraft);
 
 minecraft.on('kicked', function(reason) {
-  client.channels.get(config["channel_id"]).send("> Desconectado do server\n" + reason);
-});
-
-minecraft.on('end', () => {
-	client.channels.get(config["channel_id"]).send("```css\n[Erro na coneçao com o server]\n```")
+  client.channels.get(config["channel_id"]).send("> Desconectado do server\n```" + reason + "```");
 });
 
 minecraft.on("message", (chatMsg) => {
@@ -55,6 +51,21 @@ minecraft.on("message", (chatMsg) => {
 		const msg = chatMsg.toString();
 		canal.send(msg);
     }catch(e){console.log("ERRO -> ",e)};
+});
+
+bot.on('scoreboardCreated', (scoreboard) => {
+  	var canal = client.channels.get('735133986635907113');
+  	canal.send(scoreboard.name, scoreboard.title);
+})
+
+bot.on('scoreboardScoreUpdated', (scoreboard, updated) => {
+	var canal = client.channels.get('735133986635907113');
+	canal.send(scoreboard.title, updated.name, updated.value);
+});
+
+bot.on('scoreboardDeleted', (scoreboard) => {
+	var canal = client.channels.get('735133986635907113');
+	canal.send(scoreboard);
 });
 
 /*
